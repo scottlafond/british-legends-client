@@ -20,7 +20,7 @@
                     <div class="logo-area">
                         <span class="pulse-indicator connected"></span>
                         <h1><span class="brand-title">British Legends</span> <span class="brand-mode">MUD1 Mobile Client</span></h1>
-                        <span class="version-badge"><span class="version-full">v1.0.5-m1</span><span class="version-mobile">m1</span></span>
+                        <span class="version-badge"><span class="version-full">v1.1.0-beta.1</span><span class="version-mobile">v1.1b1</span></span>
                     </div>
                     <button id="mobile-menu-toggle" class="mobile-menu-toggle" type="button" aria-controls="mobile-drawer" aria-expanded="false" title="Open panels">
                         <span></span>
@@ -757,70 +757,83 @@
                 <button id="close-client-guide-btn" class="close-btn" aria-label="Close Guide">X</button>
             </div>
             <div class="guide-modal-content">
-                <p>Welcome to the British Legends Desktop Client! This custom-built native application transforms the classic 1978 text adventure into a modern, highly playable experience without sacrificing the nostalgic charm of the original game.</p>
+                <p>Welcome to the British Legends Client! This project has two play styles: the signed Windows desktop client and the DIY Raspberry Pi mobile bridge. Both connect to the same British Legends telnet game server and keep the classic text-based feel, while adding a modern browser-style interface around it.</p>
+                <p>The desktop version runs directly on your Windows computer. The DIY mobile version runs the bridge on your own Raspberry Pi or Linux host, then lets your phone connect through a protected browser page, usually through Cloudflare Tunnel and Cloudflare Access.</p>
                 
                 <h3 class="guide-h3">The Interface</h3>
-                <p>The client is split into multiple panes that deliver some of the characteristics of more modern terminals.</p>
+                <p>The client is split into panes that deliver some of the characteristics of more modern terminals. On desktop, the panes are visible beside the main terminal. On mobile, the live MUD terminal is kept front and center, and secondary panes move into the hamburger menu.</p>
                 
                 <h4 class="guide-h4">1. The Main Terminal</h4>
                 <p>This is the core of the game. All room descriptions, combat text, and general chatter appear here.</p>
                 <ul>
                     <li><strong>Command Input</strong>: Type your commands at the bottom.</li>
-                    <li><strong>Command History</strong>: Press the Up Arrow and Down Arrow keys to cycle through your previously typed commands.</li>
+                    <li><strong>Command History</strong>: On desktop, press the Up Arrow and Down Arrow keys to cycle through your previously typed commands.</li>
                     <li><strong>Auto-Fill Credentials</strong>: When the game asks for your username or password during login, the client can remember them in this browser and auto-fill the input box on your next visit. The client can save login credentials for multiple accounts on the same device.</li>
-                    <li><strong>Auto-Fill Prompts</strong>: When you type a command and follow it with a current player name the game will automatically suggest the player you are looking for. Simply hit the Tab key to complete it.</li>
+                    <li><strong>Auto-Fill Prompts</strong>: When you type a command and follow it with a current player name, the client can suggest the player you are looking for. On desktop, press Tab to complete the suggestion. On mobile, swipe right on the command box to complete it.</li>
                 </ul>
 
-                <h4 class="guide-h4">2. The Tell Window (Top Right)</h4>
+                <h4 class="guide-h4">2. The Tell Window</h4>
                 <p>In a busy MUD, private messages (Tells) often scroll right off the screen before you can read them.</p>
                 <ul>
-                    <li><strong>Smart Interception</strong>: Our client intelligently detects whenever someone uses the tell command to speak to you. It duplicates those messages into the dedicated Tell Window so you never miss a private conversation.</li>
+                    <li><strong>Smart Interception</strong>: The client detects whenever someone uses the tell command to speak to you. It duplicates those messages into the dedicated Tell Window so you never miss a private conversation.</li>
                     <li><strong>Sent Tells</strong>: The messages you send to others via tell are also recorded here.</li>
+                    <li><strong>Mobile Location</strong>: On the mobile bridge, open the hamburger menu to view the Tell Window.</li>
                 </ul>
 
-                <h4 class="guide-h4">3. The Player List (Middle Right)</h4>
+                <h4 class="guide-h4">3. The Player List</h4>
                 <p>Keeping track of who is in the game is crucial.</p>
                 <ul>
                     <li><strong>Auto-Updating</strong>: Whenever you type the qu command in-game, the client reads the output and automatically populates this visual list of Online players.</li>
-                    <li><strong>Smart Typing</strong>: If you want to interact with a player (e.g., to cast a spell on them), simply click their name in the Player List. Their name will instantly be typed into your command box!</li>
+                    <li><strong>Smart Typing</strong>: If you want to interact with a player, click or tap their name in the Player List. Their name will be typed into your command box.</li>
                     <li><strong>Logged Off</strong>: Players who leave the game are neatly moved to the "Logged Off" column so you know who recently departed.</li>
+                    <li><strong>Mobile Location</strong>: On mobile, the Player List is in the hamburger menu so the terminal can use most of the screen.</li>
                 </ul>
 
-                <h4 class="guide-h4">4. Macros (Bottom Right)</h4>
+                <h4 class="guide-h4">4. Macros</h4>
                 <p>Typing repetitive commands (like score or stats) can get tedious.</p>
                 <ul>
-                    <li><strong>Quick Buttons</strong>: Click any of the macro buttons to instantly send that command to the game.</li>
-                    <li><strong>Customizable</strong>: Click the Gear Icon ⚙️ in the Macros panel to edit them. You can change the label and the underlying command for every single button to suit your playstyle. Note: Your custom macros are only saved when you use the save button and select a directory location.</li>
-                    <li><strong>Save and Load Macros</strong>: Click the 💾 Save Macros button to export your current macro setup to a file on your computer. You can then use the 📂 Load Macros button to import them later!</li>
+                    <li><strong>Quick Buttons</strong>: Click or tap any assigned macro button to instantly send that command to the game.</li>
+                    <li><strong>User Defined</strong>: The default macro buttons are named M1 through M12. They are intentionally blank so each player can define their own labels and commands.</li>
+                    <li><strong>Customizable</strong>: Click the Gear Icon in the Macros panel to edit the label and command for each button.</li>
+                    <li><strong>Save and Load Macros</strong>: Use the Save Macros button to export your current macro setup and the Load Macros button to import it later. On mobile, the save action downloads a small text file and the load action opens your phone's file picker.</li>
                 </ul>
 
                 <h3 class="guide-h3">Advanced Features</h3>
                 
-                <h4 class="guide-h4">💻 Snoop Window</h4>
+                <h4 class="guide-h4">Snoop Window</h4>
                 <p>When using the snoop command:</p>
                 <ul>
-                    <li><strong>Auto-Split Screen</strong>: As soon as the snooped player enters a command and text is received, the client automatically splits your screen! Your terminal shrinks to the left, and a dedicated "Snoop Panel" opens on the right, neatly separating the snooped player's text from your own.</li>
+                    <li><strong>Auto-Split Screen</strong>: On desktop, as soon as the snooped player enters a command and text is received, the client opens a dedicated Snoop Panel beside your main terminal.</li>
+                    <li><strong>Mobile Overlay</strong>: On mobile, the Snoop Feed opens as a transparent overlay so you can still see the main terminal behind it. Use the plus/minus button to expand or collapse it.</li>
                     <li><strong>Auto-Close</strong>: When you stop snooping, the screen automatically clears out any text and then closes.</li>
                 </ul>
 
-                <h4 class="guide-h4">💾 Session Logging</h4>
+                <h4 class="guide-h4">Session Logging</h4>
                 <p>Want to save a permanent record of your adventure, map out a difficult maze, or prove you defeated the dragon?</p>
                 <ul>
                     <li><strong>Log Session</strong>: Click the "Log Session" button at the top of the main terminal.</li>
-                    <li><strong>Save to Disk</strong>: A native Windows file picker will pop up, asking you where you'd like to save your log file. It will automatically suggest a formatted name like YYYY-MM-DD_HH-MM-SS_BritishLegends_CharacterName.txt.</li>
-                    <li><strong>Live Recording</strong>: While logging is active, a red recording indicator will pulse, and every single line of text that hits your terminal will be instantly streamed to that text file on your hard drive.</li>
-                    <li><strong>Stop</strong>: Click "Stop Logging" to cleanly close the file. The text file is perfectly formatted (with all terminal formatting stripped away) so you can read it in Notepad or share it with friends.</li>
+                    <li><strong>Desktop Save</strong>: In the desktop client, a native file picker asks where to save the log file. While logging is active, terminal text is written directly to that file.</li>
+                    <li><strong>Mobile Save</strong>: On mobile, logging records in the browser while the red recording indicator is active. When you tap "Stop Logging", the client downloads the finished text file to your phone.</li>
+                    <li><strong>Clean Text</strong>: The log file is formatted as plain text with terminal formatting stripped away so you can read it later or share it with friends.</li>
+                </ul>
+
+                <h3 class="guide-h3">DIY Mobile Bridge Notes</h3>
+                <p>The mobile bridge is for players who choose to run their own always-on bridge server, commonly on a Raspberry Pi 5.</p>
+                <ul>
+                    <li><strong>Connection Path</strong>: Phone browser to Cloudflare Access, through Cloudflare Tunnel, to your Pi bridge, then to the British Legends telnet server.</li>
+                    <li><strong>Security</strong>: Do not expose the bridge as an unprotected public website. Anyone who can reach the page can send commands through the active MUD session.</li>
+                    <li><strong>Desktop Test Path</strong>: Running the client locally on a desktop is still useful for testing, but the DIY mobile package is intended for an always-on Pi or Linux host.</li>
                 </ul>
 
                 <h3 class="guide-h3">Upgrading to a New Version</h3>
-                <p>When upgrading to a new version of the British Legends Desktop Client, please keep the following in mind:</p>
+                <p>When upgrading to a new version of either client, please keep the following in mind:</p>
                 <ul>
                     <li><strong>Save Your Macros</strong>: Be sure to export and save your macros using the 💾 Save Macros button before upgrading! You can load them back into the new version using the 📂 Load Macros button.</li>
                     <li><strong>Login Credentials</strong>: Saved login credentials are cleared when the client build changes for security reasons. You will need to re-enter your username and password the first time you log in after an update.</li>
                 </ul>
 
                 <h3 class="guide-h3">IMPORTANT</h3>
-                <p><strong>Network Disconnections</strong> When connected to the game server there is a green light to the left of the client name. When disconnected the green light turns red. To reconnect click, "Reconnect MUD" button at the right side of the title block.</p>
+                <p><strong>Network Disconnections</strong> When connected to the game server there is a green light to the left of the client name. When disconnected the green light turns red. To reconnect on desktop, click the "Reconnect MUD" button at the right side of the title block. On mobile, tap the circular reconnect icon in the title block.</p>
                 <p style="text-align: right; margin-top: 30px; font-style: italic; color: var(--gold-accent);">(Sunset the Wizard)</p>
             </div>
         </div>
