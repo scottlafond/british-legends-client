@@ -1163,7 +1163,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Macros Logic
-    let savedMacros = JSON.parse(localStorage.getItem('mudMacros'));
+    let savedMacros = null;
+    try {
+        savedMacros = JSON.parse(localStorage.getItem('mudMacros') || 'null');
+    } catch (error) {
+        localStorage.removeItem('mudMacros');
+    }
     const legacyDefaultMacros = [
         { label: "Exits", cmd: "exits" }, { label: "S", cmd: "s" }, { label: "Down", cmd: "d" },
         { label: "Score", cmd: "sc" }, { label: "Stats", cmd: "st" }, { label: "Who", cmd: "who" },
@@ -1174,16 +1179,25 @@ document.addEventListener("DOMContentLoaded", () => {
         label: `M${index + 1}`,
         cmd: ""
     }));
+    function matchesLegacyMacro(macro, legacyMacro) {
+        return macro && macro.label === legacyMacro.label && macro.cmd === legacyMacro.cmd;
+    }
+    function containsLegacyMacroSet(source) {
+        if (!Array.isArray(source) || source.length < legacyDefaultMacros.length) return false;
+        for (let start = 0; start <= source.length - legacyDefaultMacros.length; start++) {
+            if (legacyDefaultMacros.every((legacyMacro, index) => matchesLegacyMacro(source[start + index], legacyMacro))) {
+                return true;
+            }
+        }
+        return false;
+    }
     if (savedMacros) {
         if (savedMacros.length === 18) {
             savedMacros = savedMacros.slice(6);
         }
-        const isLegacyDefaultSet = savedMacros.length === 12 && savedMacros.every((macro, index) => {
-            const legacyMacro = legacyDefaultMacros[index];
-            return macro && macro.label === legacyMacro.label && macro.cmd === legacyMacro.cmd;
-        });
+        const isLegacyDefaultSet = savedMacros.length === 12 && savedMacros.every((macro, index) => matchesLegacyMacro(macro, legacyDefaultMacros[index]));
 
-        if (isLegacyDefaultSet) {
+        if (isLegacyDefaultSet || containsLegacyMacroSet(savedMacros)) {
             localStorage.removeItem('mudMacros');
         } else {
             for (let i = 0; i < savedMacros.length && i < 12; i++) {
@@ -1221,7 +1235,7 @@ document.addEventListener("DOMContentLoaded", () => {
             saveBtn.innerText = "Save";
 
             saveBtn.onclick = () => {
-                macros[index].label = labelInput.value.trim() || `Macro ${index+1}`;
+                macros[index].label = labelInput.value.trim() || `M${index + 1}`;
                 macros[index].cmd = cmdInput.value.trim();
                 localStorage.setItem('mudMacros', JSON.stringify(macros));
                 renderMacros();
@@ -1310,7 +1324,7 @@ document.addEventListener("DOMContentLoaded", () => {
         for (let i = 0; i < source.length && i < 12; i++) {
             const macro = source[i] || {};
             normalized.push({
-                label: String(macro.label || `Macro ${i + 1}`),
+                label: String(macro.label || `M${i + 1}`),
                 cmd: String(macro.cmd || "")
             });
         }
