@@ -494,6 +494,14 @@ body {
     font-style: italic;
 }
 
+.welcome-line {
+    display: block;
+    margin: 0;
+    text-align: left;
+    white-space: normal;
+    word-break: normal;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 6px;
