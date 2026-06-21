@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function hasPasswordPrompt(text) {
-        return /(?:^|\n)\s*(?:password(?:\s+for\s+[A-Za-z0-9_]+)?\s*:?)\s*$/im.test(text);
+        return /(?:^|\n)\s*.*(?:password(?:\s+for\s+[A-Za-z0-9_]+)?|what is your password).*$/im.test(text);
     }
 
     function hasLoggedInGreeting(text) {
@@ -579,9 +579,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Remember username or password for multi-account
         if (handleLogin && loginState.prompt === "username") {
             loginState.pendingUsername = command;
-            loginState.prompt = "";
+            loginState.prompt = "awaitingPassword";
             hideCredentialSuggestions();
-        } else if (handleLogin && loginState.prompt === "password") {
+        } else if (handleLogin && (loginState.prompt === "password" || loginState.prompt === "awaitingPassword")) {
             if (loginState.pendingUsername) {
                 saveCredential(loginState.pendingUsername, command);
             }
@@ -1001,9 +1001,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const sawUsernamePrompt = hasUsernamePrompt(data.mud_output);
                 const sawPasswordPrompt = hasPasswordPrompt(data.mud_output);
                 const sawLoggedInGreeting = hasLoggedInGreeting(data.mud_output);
-                const hasConfirmedPlayerName = Boolean(data.my_name) && !sawUsernamePrompt && !sawPasswordPrompt;
 
-                if (sawLoggedInGreeting || hasConfirmedPlayerName) {
+                if (sawLoggedInGreeting) {
                     clearLoginState();
                 } else if (sawUsernamePrompt) {
                     loginState.prompt = "username";

@@ -694,10 +694,14 @@ class DashboardHTTPHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header("Access-Control-Allow-Origin", "*")
             self.end_headers()
             
-            # If not connected, make sure stats and state are cleared
+            # If not connected, make sure stats and state are cleared.
+            # A fresh browser starts with since=0; in that case, do not replay
+            # stale terminal text from a dead MUD session.
             is_connected = is_mud_connected()
             if not is_connected:
                 with state_lock:
+                    if since_seq <= 0:
+                        reset_mud_output("")
                     stats["score"] = 0
                     stats["stamina"] = "0/0"
                     stats["stamina_val"] = 0
