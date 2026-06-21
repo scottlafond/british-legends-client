@@ -178,7 +178,8 @@ body {
 }
 
 .version-mobile,
-.button-label-short {
+.button-label-short,
+.welcome-copy-mobile {
     display: none;
 }
 
@@ -1722,12 +1723,14 @@ body {
     }
 
     .version-full,
-    .button-label-full {
+    .button-label-full,
+    .welcome-copy-desktop {
         display: none;
     }
 
     .version-mobile,
-    .button-label-short {
+    .button-label-short,
+    .welcome-copy-mobile {
         display: inline;
     }
 
