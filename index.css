@@ -157,6 +157,10 @@ body {
     display: inline;
 }
 
+.logo-area h1 .brand-mode-mobile {
+    display: none;
+}
+
 .version-badge {
     font-size: 13px;
     font-weight: normal;
@@ -1699,6 +1703,14 @@ body {
         margin-left: 0;
         font-size: inherit;
         letter-spacing: inherit;
+    }
+
+    .logo-area h1 .brand-mode-desktop {
+        display: none;
+    }
+
+    .logo-area h1 .brand-mode-mobile {
+        display: inline;
     }
 
     .version-badge {
