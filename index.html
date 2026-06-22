@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;800&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css?v=25">
+    <link rel="stylesheet" href="index.css?v=27">
 </head>
 <body>
     <div class="app-container">
@@ -93,7 +93,10 @@
                 <div class="screens-container">
                     <!-- Terminal Output Screen -->
                     <div id="terminal-screen" class="terminal-body">
-                        <div class="log-line system-msg">Welcome to British Legends Web Client dashboard. Logs will appear here...</div>
+                <div class="log-line system-msg welcome-line">
+                    <span class="welcome-copy-desktop">Welcome to British Legends MUD1 Client. Click Reconnect MUD to connect to MUD1.</span>
+                    <span class="welcome-copy-mobile">Welcome to British Legends Mobile Client. Tap the ↻ reconnect icon to connect to MUD1.</span>
+                </div>
                     </div>
 
                     <div id="snoop-resizer" class="resizer"></div>
@@ -833,7 +836,7 @@
                 </ul>
 
                 <h3 class="guide-h3">IMPORTANT</h3>
-                <p><strong>Network Disconnections</strong> When connected to the game server there is a green light to the left of the client name. When disconnected the green light turns red. To reconnect on desktop, click the "Reconnect MUD" button at the right side of the title block. On mobile, tap the circular reconnect icon in the title block.</p>
+                <p><strong>Network Disconnections</strong> When connected to the game server there is a green light to the left of the client name. When disconnected the green light turns red. To reconnect on desktop, click the "Reconnect MUD" button at the right side of the title block. On mobile, tap the circular ↻ reconnect icon in the title block.</p>
                 <p style="text-align: right; margin-top: 30px; font-style: italic; color: var(--gold-accent);">(Sunset the Wizard)</p>
             </div>
         </div>

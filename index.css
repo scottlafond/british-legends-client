@@ -178,7 +178,8 @@ body {
 }
 
 .version-mobile,
-.button-label-short {
+.button-label-short,
+.welcome-copy-mobile {
     display: none;
 }
 
@@ -491,6 +492,14 @@ body {
 .system-msg {
     color: var(--color-text-muted);
     font-style: italic;
+}
+
+.welcome-line {
+    display: block;
+    margin: 0;
+    text-align: left;
+    white-space: normal;
+    word-break: normal;
 }
 
 /* Custom Scrollbar */
@@ -1722,12 +1731,14 @@ body {
     }
 
     .version-full,
-    .button-label-full {
+    .button-label-full,
+    .welcome-copy-desktop {
         display: none;
     }
 
     .version-mobile,
-    .button-label-short {
+    .button-label-short,
+    .welcome-copy-mobile {
         display: inline;
     }
 
