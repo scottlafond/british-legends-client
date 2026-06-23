@@ -1,0 +1,25 @@
+{
+  "name": "British Legends Mobile MUD1 Client",
+  "short_name": "BL MUD1",
+  "description": "A mobile-friendly British Legends MUD1 browser client.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#1b100b",
+  "theme_color": "#21140e",
+  "icons": [
+    {
+      "src": "/bl-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/bl-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
