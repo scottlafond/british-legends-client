@@ -659,6 +659,11 @@ def reconnect_mud():
 
 # HTTP Request Handler for UI static files & polling API
 class DashboardHTTPHandler(http.server.SimpleHTTPRequestHandler):
+    extensions_map = {
+        **http.server.SimpleHTTPRequestHandler.extensions_map,
+        ".webmanifest": "application/manifest+json",
+    }
+
     def log_message(self, format, *args):
         # Silence server request logs in command line
         pass
