@@ -15,6 +15,7 @@ STATIC_FILES = [
     "index.js",
     "index.css",
     "manifest.webmanifest",
+    "favicon.ico",
     "curated_map_layout.json",
     "strategy.json",
     "world_map_static.json",
